@@ -4,6 +4,12 @@ import VueRouter from 'vue-router'
 import login from '../components/Login/index.vue'
 // 导入注册组件
 import register from '../components/Register/index.vue'
+//导入axios
+import axios from 'axios'
+//设置axios的响应拦截器，处理数据
+axios.interceptors.response.use(res => {
+ return res.data
+})
 
 Vue.use(VueRouter)
 
