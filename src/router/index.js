@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 import login from '../components/Login/index.vue'
 // 导入注册组件
 import register from '../components/Register/index.vue'
+// 导入Home组件
+import home from '../components/Home/index.vue'
 //导入axios
 import axios from 'axios'
 //设置axios的响应拦截器，处理数据
@@ -20,11 +22,15 @@ const routes = [
   },
   {
     path: '/',
-    redirect: '/login',
+    redirect: '/home',
   },
   {
     path: '/register',
     component: register,
+  },
+  {
+    path: '/home',
+    component: home,
   },
 ]
 

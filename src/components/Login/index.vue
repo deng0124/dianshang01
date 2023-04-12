@@ -62,13 +62,7 @@
       <div class="beian">京ICP备19006430号
       </div>
     </div>
-	<h2>
-    主分支的内容
-    你没有
-    不能改我的
-  </h2>
   </div>
- 
 </template>
 
 <script>

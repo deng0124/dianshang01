@@ -8,30 +8,30 @@
 			</h3>
 			<div class="content">
 				<label>手机号:</label>
-				<input type="text" placeholder="请输入你的手机号" v-model="cs.phone">
-				<span class="error-msg">错误提示信息</span>
+				<input type="text" placeholder="请输入你的手机号" v-model="cs.phone" >
+				<!-- <span class="error-msg">错误提示信息</span> -->
 			</div>
 			<div class="content">
 				<label>验证码:</label>
 				<input type="text" placeholder="请输入验证码" v-model="cs.code">
 				<button @click="getyzm()">获取验证码</button>
 				<!-- <img ref="code" src="http://182.92.128.115/api/user/passport/code" alt="code"> -->
-				<span class="error-msg">错误提示信息</span>
+				<!-- <span class="error-msg">错误提示信息</span> -->
 			</div>
 			<div class="content">
 				<label>登录密码:</label>
 				<input type="text" placeholder="请输入你的登录密码" v-model="cs.password">
-				<span class="error-msg">错误提示信息</span>
+				<!-- <span class="error-msg">错误提示信息</span> -->
 			</div>
 			<div class="content">
 				<label>确认密码:</label>
 				<input type="text" placeholder="请输入确认密码">
-				<span class="error-msg">错误提示信息</span>
+				<!-- <span class="error-msg">错误提示信息</span> -->
 			</div>
 			<div class="controls">
 				<input name="m1" v-model="checked" type="checkbox">
 				<span>同意协议并注册《尚品汇用户协议》</span>
-				<span class="error-msg">错误提示信息</span>
+				<!-- <span class="error-msg">错误提示信息</span> -->
 			</div>
 			<div class="btn">
 				<button @click="zc()">完成注册</button>
@@ -50,7 +50,7 @@
 				<li>销售联盟</li>
 				<li>尚品汇社区</li>
 			</ul>
-			<div class="address">地址：北京市昌平区宏福科技园综合楼6层</div>
+			<div class="address">地址:北京市昌平区宏福科技园综合楼6层</div>
 			<div class="beian">京ICP备19006430号
 			</div>
 		</div>
@@ -65,6 +65,50 @@
 		name: 'Register',
 		data() {
 			return {
+				// username: [{
+				// 		required: true,
+				// 		message: '请输入姓名',
+				// 		trigger: 'blur'
+				// 	},
+				// 	{
+				// 		min: 3,
+				// 		max: 10,
+				// 		message: '长度在 3 到 10 个字符',
+				// 		trigger: 'blur'
+				// 	},
+				// ],
+				// password: [{
+				// 	required: true,
+				// 	message: '请输入密码',
+				// 	trigger: 'blur'
+				// }, {
+				// 	min: 6,
+				// 	max: 15,
+				// 	message: '长度在 6 到 15 个字符',
+				// 	trigger: 'blur'
+				// }],
+				// email: [{
+				// 		required: true,
+				// 		message: '请输入邮箱',
+				// 		trigger: 'blur'
+				// 	},
+				// 	//2 加自定义规则
+				// 	{
+				// 		validator: checkEmail,
+				// 		trigger: 'blur'
+				// 	}
+				// ],
+				// mobile: [{
+				// 		required: true,
+				// 		message: '请输入手机号码',
+				// 		trigger: 'blur'
+				// 	},
+				// 	//2. 加自定义规则
+				// 	{
+				// 		validator: checkMobile,
+				// 		trigger: 'blur'
+				// 	}
+				// ],
 				cs: {
 					phone: "",
 					password: "",
@@ -85,20 +129,31 @@
 				})
 			},
 			zc() {
-				if(this.checked){
+				if (this.checked) {
 					this.$http({
 						method: "post",
 						url: "/api/user/passport/register",
 						data: this.cs,
-					}).then(res=>{
+					}).then(res => {
 						console.log(res)
 					})
-				}else{
+				} else {
 					alert('请勾选协议')
 				}
-				
-			}
 
+			},
+			validatePhone() {
+				const reg = /^1[3456789]\d{9}$/;
+				if (!this.cs.phone) {
+					// 手机号码不能为空
+					return false;
+				} else if (!reg.test(this.cs.phone)) {
+					// 手机号码格式不正确
+					return false;
+				} else {
+					return true;
+				}
+			}
 		}
 	}
 </script>
