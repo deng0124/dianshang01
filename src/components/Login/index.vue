@@ -58,7 +58,7 @@
         <li>销售联盟</li>
         <li>尚品汇社区</li>
       </ul>
-      <div class="address">地址：北京市昌平区宏福科技园综合楼6层</div>
+      <div class="address">地址:北京市昌平区宏福科技园综合楼6层</div>
       <div class="beian">京ICP备19006430号
       </div>
     </div>
@@ -77,14 +77,14 @@
 			};
 		},
 		methods: {
-			getyzm() {
-				this.$http.get('/api/user/passport/sendCode/' + this.cs.phone).then((res) => {
-					console.log(res)
-					if (res.code === 200) {
-						alert('你的验证码为：' + res.data)
-					}
-				})
-			},
+			// getyzm() {
+			// 	this.$http.get('/api/user/passport/sendCode/' + this.cs.phone).then((res) => {
+			// 		console.log(res)
+			// 		if (res.code === 200) {
+			// 			alert('你的验证码为：' + res.data)
+			// 		}
+			// 	})
+			// },
 			dl() {
 				this.$http({
 					method: "post",
